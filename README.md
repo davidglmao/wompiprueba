@@ -44,7 +44,7 @@ El script `src/gts.py` realiza las siguientes operaciones:
 El script recibe como parámetros la ruta del archivo de entrada y la ruta del archivo de salida.
 
 ```bash
-python src/gts.py --input transactions_50k.jsonl --output transaction_summary.parquet
+python src/gts.py --input transactions_50k.jsonl --output output/transaction_summary.parquet
 ```
 
 Ejemplo utilizando el archivo de prueba:
