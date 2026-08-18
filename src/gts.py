@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 
 import pandas as pd
 
@@ -60,6 +61,11 @@ if __name__ == "__main__":
     nm_args = nm_parser.parse_args()
 
     nm_resultado = procesar_transacciones(nm_args.input)
+
+    nm_directorio_salida = os.path.dirname(nm_args.output)
+
+    if nm_directorio_salida:
+        os.makedirs(nm_directorio_salida, exist_ok=True)
 
     nm_resultado.to_parquet(
         nm_args.output,
