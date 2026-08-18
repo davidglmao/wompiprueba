@@ -38,3 +38,30 @@ def procesar_transacciones(nm_archivo_entrada):
     )
 
     return nm_resumen
+
+
+if __name__ == "__main__":
+    nm_parser = argparse.ArgumentParser(
+        description="Genera un resumen de transacciones aprobadas."
+    )
+
+    nm_parser.add_argument(
+        "--input",
+        required=True,
+        help="Ruta del archivo JSONL de entrada."
+    )
+
+    nm_parser.add_argument(
+        "--output",
+        required=True,
+        help="Ruta del archivo Parquet de salida."
+    )
+
+    nm_args = nm_parser.parse_args()
+
+    nm_resultado = procesar_transacciones(nm_args.input)
+
+    nm_resultado.to_parquet(
+        nm_args.output,
+        index=False
+    )
